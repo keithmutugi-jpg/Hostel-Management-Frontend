@@ -1,7 +1,5 @@
 import Navbar from "../components/layout/Navbar";
 import Sidebar from "../components/layout/Sidebar";
-import Card from "../components/ui/Card";
-
 const roomsData = [
   { id: 1, type: "Single Room", status: "Available" },
   { id: 2, type: "Double Room", status: "Occupied" },
