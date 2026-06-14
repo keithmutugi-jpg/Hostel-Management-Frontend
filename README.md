@@ -1,5 +1,19 @@
-<<<<<<< HEAD
-# hostel-management-frontend
-=======
-# Hostel-Management-Frontend
->>>>>>> 7711ca58ec671b378f01e83c0ed285f3fe8d9acf
+# Hostel Management Frontend
+
+## Tech Stack
+- React + Vite
+- Tailwind CSS
+- Fetch API
+
+## Setup
+
+```bash
+cd Hostel_Management
+npm install
+npm run dev
+```
+
+## Contributors
+- Jayson Gichuki
+- Gloria Wanja
+- Erick Masila
