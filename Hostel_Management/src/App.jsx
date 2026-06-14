@@ -1,33 +1,28 @@
-
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import ProtectedRoute from "./routes/ProtectedRoute";
 
-function Dashboard() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1 className="text-3xl font-bold text-blue-600">
-        Dashboard
-      </h1>
-    </div>
-  );
-}
+import Dashboard from "./pages/Dashboard";
+import Rooms from "./pages/Rooms";
+import Admin from "./pages/Admin";
+import Maintenance from "./pages/Maintenance";
+
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
 
-        {/* Redirect root to login */}
+        {/* Root redirect */}
         <Route path="/" element={<Navigate to="/login" replace />} />
 
-        {/* Public Routes */}
+        {/* PUBLIC ROUTES */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Protected Route */}
+        {/* PROTECTED ROUTES */}
         <Route
           path="/dashboard"
           element={
@@ -37,7 +32,34 @@ function App() {
           }
         />
 
-        {/* 404 Page */}
+        <Route
+          path="/rooms"
+          element={
+            <ProtectedRoute>
+              <Rooms />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <Admin />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/maintenance"
+          element={
+            <ProtectedRoute>
+              <Maintenance />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* 404 PAGE */}
         <Route
           path="*"
           element={
