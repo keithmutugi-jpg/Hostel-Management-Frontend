@@ -6,6 +6,8 @@ import { API_BASE_URL } from "../config/api";
 export default function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
+  const hostelImage =
+    "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=1600&q=80";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -49,14 +51,18 @@ export default function Login() {
 
   return (
     <div className="grid min-h-screen bg-slate-950 px-4 py-8 md:grid-cols-[1fr_480px] md:px-8">
-      <section className="hidden min-h-[calc(100vh-4rem)] flex-col justify-between rounded-xl bg-[url('/src/assets/hero.png')] bg-cover bg-center p-8 text-white md:flex">
-        <div className="w-fit rounded-lg bg-slate-950/80 px-4 py-3 backdrop-blur">
+      <section
+        className="relative hidden min-h-[calc(100vh-4rem)] flex-col justify-between overflow-hidden rounded-xl bg-cover bg-center p-8 text-white md:flex"
+        style={{ backgroundImage: `url(${hostelImage})` }}
+      >
+        <div className="absolute inset-0 bg-slate-950/50" />
+        <div className="relative w-fit rounded-lg bg-slate-950/80 px-4 py-3 backdrop-blur">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-teal-300">
-            Hostel HQ
+            Hostel Living
           </p>
-          <p className="mt-1 text-sm text-slate-200">Campus living, organized.</p>
+          <p className="mt-1 text-sm text-slate-200">Shared spaces, organized.</p>
         </div>
-        <div className="max-w-xl rounded-xl bg-slate-950/75 p-6 backdrop-blur">
+        <div className="relative max-w-xl rounded-xl bg-slate-950/75 p-6 backdrop-blur">
           <h1 className="text-5xl font-black tracking-tight">
             Manage every room with calm precision.
           </h1>
