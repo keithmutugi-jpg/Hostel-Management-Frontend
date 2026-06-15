@@ -63,8 +63,8 @@ function App() {
         <Route
           path="*"
           element={
-            <div className="min-h-screen flex items-center justify-center">
-              <h1 className="text-2xl font-bold text-red-500">
+            <div className="flex min-h-screen items-center justify-center bg-slate-950 px-4">
+              <h1 className="rounded-xl border border-white/10 bg-white px-6 py-5 text-2xl font-black text-slate-950 shadow-2xl shadow-black/30">
                 404 - Page Not Found
               </h1>
             </div>

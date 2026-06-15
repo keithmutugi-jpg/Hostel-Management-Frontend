@@ -48,65 +48,82 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+    <div className="grid min-h-screen bg-slate-950 px-4 py-8 md:grid-cols-[1fr_480px] md:px-8">
+      <section className="hidden min-h-[calc(100vh-4rem)] flex-col justify-between rounded-xl bg-[url('/src/assets/hero.png')] bg-cover bg-center p-8 text-white md:flex">
+        <div className="w-fit rounded-lg bg-slate-950/80 px-4 py-3 backdrop-blur">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-teal-300">
+            Hostel HQ
+          </p>
+          <p className="mt-1 text-sm text-slate-200">Campus living, organized.</p>
+        </div>
+        <div className="max-w-xl rounded-xl bg-slate-950/75 p-6 backdrop-blur">
+          <h1 className="text-5xl font-black tracking-tight">
+            Manage every room with calm precision.
+          </h1>
+          <p className="mt-4 text-slate-300">
+            Students, rooms, requests, and approvals in one clean workspace.
+          </p>
+        </div>
+      </section>
 
-        <h1 className="text-3xl font-bold text-center text-blue-600 mb-6">
-          Hostel Management Login
-        </h1>
+      <section className="flex items-center justify-center md:px-8">
+        <div className="w-full max-w-md rounded-xl border border-white/10 bg-white p-7 shadow-2xl shadow-black/30">
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-600">
+            Welcome back
+          </p>
+          <h1 className="mt-2 text-3xl font-black tracking-tight text-slate-950">
+            Sign in to Hostel HQ
+          </h1>
+          <p className="mt-2 text-sm text-slate-500">
+            Keep operations moving from your dashboard.
+          </p>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+            <div>
+              <label className="mb-2 block text-sm font-semibold text-slate-700">
+                Email
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-slate-950 outline-none transition focus:border-teal-500 focus:bg-white focus:ring-4 focus:ring-teal-500/10"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
 
-          {/* Email */}
-          <div>
-            <label className="block mb-1 font-medium">
-              Email
-            </label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter email"
-              required
-            />
-          </div>
+            <div>
+              <label className="mb-2 block text-sm font-semibold text-slate-700">
+                Password
+              </label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-slate-950 outline-none transition focus:border-teal-500 focus:bg-white focus:ring-4 focus:ring-teal-500/10"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
 
-          {/* Password */}
-          <div>
-            <label className="block mb-1 font-medium">
-              Password
-            </label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter password"
-              required
-            />
-          </div>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full rounded-lg bg-teal-500 py-3 font-black text-slate-950 shadow-lg shadow-teal-500/25 transition hover:-translate-y-0.5 hover:bg-teal-400 disabled:opacity-50"
+            >
+              {loading ? "Logging in..." : "Login"}
+            </button>
+          </form>
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 disabled:opacity-50"
-          >
-            {loading ? "Logging in..." : "Login"}
-          </button>
-
-        </form>
-
-        {/* Register link */}
-        <p className="text-center mt-4 text-sm">
-          Don’t have an account?{" "}
-          <Link to="/register" className="text-blue-600 font-semibold">
-            Register
-          </Link>
-        </p>
-
-      </div>
+          <p className="mt-5 text-center text-sm text-slate-500">
+            Don't have an account?{" "}
+            <Link to="/register" className="font-bold text-teal-700 hover:text-teal-600">
+              Register
+            </Link>
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
