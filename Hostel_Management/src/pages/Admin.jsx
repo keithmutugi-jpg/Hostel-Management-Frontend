@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useMaintenance } from "../context/MaintenaceContext";
  
 import Navbar from "../components/layout/Navbar";
 import Sidebar from "../components/layout/Sidebar";
@@ -58,7 +59,7 @@ function SectionHeader({ eyebrow, title }) {
  
 export default function Admin() {
   const [applications, setApplications] = useState(initialApplications);
-  const [maintenance, setMaintenance] = useState(initialMaintenance);
+  const {requests: maintenance, updateStatus} = useMaintenance();
   const [payments] = useState(initialPayments);
  
   const [selectedApp, setSelectedApp] = useState(null);
@@ -86,7 +87,7 @@ export default function Admin() {
     closeAppModal();
   };
  
-  // -- Maintenance --
+  // Maintenance 
   const openTicketModal = (ticket) => {
     setSelectedTicket(ticket);
     setIsTicketModalOpen(true);
@@ -98,11 +99,7 @@ export default function Admin() {
   };
  
   const updateTicketStatus = (status) => {
-    const updated = maintenance.map((t) =>
-      t.id === selectedTicket.id ? { ...t, status } : t
-    );
-    setMaintenance(updated);
-    // TODO: PATCH /maintenance/{selectedTicket.id} { status }
+    updateStatus(selectedTicket.id, status)
     closeTicketModal();
   };
  
@@ -151,7 +148,7 @@ export default function Admin() {
                 >
                   <div className="mb-5 flex items-center justify-between">
                     <span className="grid h-11 w-11 place-items-center rounded-lg bg-indigo-50 font-black text-indigo-700">
-                      {ticket.room.slice(0, 1)}
+                      {(ticket.room ?? ticket.issue).slice(0, 1)}
                     </span>
                     <StatusPill status={ticket.status} />
                   </div>
