@@ -1,36 +1,18 @@
 import { useState } from "react";
+import { useMaintenance} from "../context/MaintenaceContext"
 
 import Navbar from "../components/layout/Navbar";
 import Sidebar from "../components/layout/Sidebar";
 
 export default function Maintenance() {
-  const [requests, setRequests] = useState([
-    {
-      id: 1,
-      issue: "Broken bed frame",
-      status: "Pending",
-    },
-    {
-      id: 2,
-      issue: "Leaking sink",
-      status: "In Progress",
-    },
-  ]);
+  const {requests, addRequest} = useMaintenance();
 
   const [issue, setIssue] = useState("");
 
   const submitRequest = (e) => {
-    e.preventDefault();
-
-    if (!issue) return;
-
-    const newRequest = {
-      id: Date.now(),
-      issue,
-      status: "Pending",
-    };
-
-    setRequests([newRequest, ...requests]);
+    e.preventDefault()
+    if(!issue) return
+    addRequest(issue)
     setIssue("");
   };
 
