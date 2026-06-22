@@ -1,1 +1,1 @@
-export const API_BASE_URL = "http://localhost:8000";
+export const API_BASE_URL = "https://hostel-management-backend-26u0.onrender.com";
