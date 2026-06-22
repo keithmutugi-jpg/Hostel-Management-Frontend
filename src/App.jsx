@@ -2,18 +2,17 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Dashboard from "./pages/Dashboard"; 
 
+import Dashboard from "./pages/Dashboard";
 import Rooms from "./pages/Rooms";
 import Admin from "./pages/Admin";
-import Maintenance from "./pages/Maintenance" 
-import { MaintenanceProvider } from "./context/MaintenaceContext";
+import Maintenance from "./pages/Maintenance";
+
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
   return (
     <BrowserRouter>
-     <MaintenanceProvider> {/*to wrap the pages so that the maintenace and admin have the same list */}
       <Routes>
 
         {/* Root redirect */}
@@ -28,7 +27,7 @@ function App() {
           path="/dashboard"
           element={
             <ProtectedRoute>
-              <Dashboard /> 
+              <Dashboard />
             </ProtectedRoute>
           }
         />
@@ -73,7 +72,6 @@ function App() {
         />
 
       </Routes>
-     </MaintenanceProvider> {/*to wrap the pages so that the maintenace and admin have the same list */}
     </BrowserRouter>
   );
 }
